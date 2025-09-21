@@ -1,12 +1,14 @@
 import Header from "../components/header/Header"
-import { Box } from "@mui/material"
-import TodoList from "../components/list/ToDoList"
+import { Box, Typography } from "@mui/material"
+import TodoList from "../components/list/TodoList"
 
 const HomePage = () => {
     return (
-        <Box display={'flex'} flexDirection={'column'} gap={2}>
+        <Box display={'flex'} flexDirection={'column'} gap={3}>
             <Header />
-            Активных задач - 0
+            <Box display={'flex'} justifyContent={'start'}>
+                <Typography variant="h6">Активных задач - 0</Typography>
+            </Box>
             <TodoList />
         </Box>
     )
