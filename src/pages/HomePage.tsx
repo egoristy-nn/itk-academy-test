@@ -1,15 +1,32 @@
 import Header from "../components/header/Header"
 import { Box, Typography } from "@mui/material"
 import TodoList from "../components/list/TodoList"
+import { useTodos } from "../hooks/useTodos"
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
+    const {
+    todos,
+    activeTodosCount,
+    filter,
+    setFilter,
+    addTodo,
+    toggleTodo,
+    editTodo,
+    deleteTodo,
+  } = useTodos();
+  
     return (
         <Box display={'flex'} flexDirection={'column'} gap={3}>
-            <Header />
+            <Header onAddTodo={addTodo} filter={filter} onFilterChange={setFilter}/>
             <Box display={'flex'} justifyContent={'start'}>
-                <Typography variant="h6">Активных задач - 0</Typography>
+                <Typography variant="h6">Активных задач - {activeTodosCount}</Typography>
             </Box>
-            <TodoList />
+            <TodoList
+                todos={todos}
+                onToggle={toggleTodo}
+                onEdit={editTodo}
+                onDelete={deleteTodo}
+            />
         </Box>
     )
 }
